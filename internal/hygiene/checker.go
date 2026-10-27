@@ -201,48 +201,6 @@ func (r *Runner) checkGoDepsInDir(ctx context.Context, c Check, dir string) Resu
 	return Result{ID: c.ID, Name: c.Name, Passed: true, Details: fmt.Sprintf("%s: all Go modules up to date", dir)}
 }
 
-func (r *Runner) checkNodeDepsInDir(ctx context.Context, c Check, dir string) Result {
-	cmd := exec.CommandContext(ctx, "npm", "outdated", "--json")
-	cmd.Dir = dir
-	out, err := cmd.Output()
-	if err != nil {
-		// npm outdated exits 1 when there are outdated packages; stdout has the JSON, stderr has errors
-		if exitErr, ok := err.(*exec.ExitError); ok {
-			if len(out) == 0 {
-				out = exitErr.Stderr
-			}
-		} else {
-			return Result{ID: c.ID, Name: c.Name, Passed: false, Details: fmt.Sprintf("%s: npm outdated failed: %v", dir, err)}
-		}
-	}
-
-	if len(out) == 0 || strings.TrimSpace(string(out)) == "{}" {
-		return Result{ID: c.ID, Name: c.Name, Passed: true, Details: fmt.Sprintf("%s: all npm packages up to date", dir)}
-	}
-
-	var outdated []string
-	for _, line := range strings.Split(string(out), "\n") {
-		line = strings.TrimSpace(line)
-		if line == "" || line == "{" || line == "}" {
-			continue
-		}
-		if strings.HasPrefix(line, "\"") {
-			name := strings.Split(line, "\"")[1]
-			outdated = append(outdated, name)
-		}
-	}
-
-	if len(outdated) > 0 {
-		return Result{
-			ID:      c.ID,
-			Name:    c.Name,
-			Passed:  false,
-			Details: fmt.Sprintf("%s: %d outdated npm packages: %s", dir, len(outdated), strings.Join(outdated, ", ")),
-		}
-	}
-	return Result{ID: c.ID, Name: c.Name, Passed: true, Details: fmt.Sprintf("%s: all npm packages up to date", dir)}
-}
-
 // FormatReport returns a markdown report from results.
 func FormatReport(results []Result) string {
 	if len(results) == 0 {
