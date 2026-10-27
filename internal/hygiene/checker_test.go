@@ -6,15 +6,14 @@ import (
 	"testing"
 )
 
+// The checks look in the current directory, so each test runs in its own
+// temporary one rather than writing into the package directory.
+
 func TestRunner_H001_pass(t *testing.T) {
-	f, err := os.CreateTemp("", "README.md")
-	if err != nil {
+	t.Chdir(t.TempDir())
+	if err := os.WriteFile("README.md", nil, 0o644); err != nil {
 		t.Fatal(err)
 	}
-	defer os.Remove(f.Name())
-	// Rename to expected path in current dir
-	os.Rename(f.Name(), "README.md")
-	defer os.Remove("README.md")
 
 	ctx := context.Background()
 	runner := NewRunner("")
@@ -25,7 +24,7 @@ func TestRunner_H001_pass(t *testing.T) {
 }
 
 func TestRunner_H001_fail(t *testing.T) {
-	os.Remove("README.md")
+	t.Chdir(t.TempDir())
 	ctx := context.Background()
 	runner := NewRunner("")
 	results := runner.Run(ctx, []Check{{ID: "H001", Name: "README", Ticked: true}})
@@ -35,12 +34,13 @@ func TestRunner_H001_fail(t *testing.T) {
 }
 
 func TestRunner_H002_pass(t *testing.T) {
-	os.MkdirAll(".github", 0755)
-	f, _ := os.Create(".github/CODEOWNERS")
-	if f != nil {
-		f.Close()
+	t.Chdir(t.TempDir())
+	if err := os.MkdirAll(".github", 0o755); err != nil {
+		t.Fatal(err)
 	}
-	defer os.RemoveAll(".github")
+	if err := os.WriteFile(".github/CODEOWNERS", nil, 0o644); err != nil {
+		t.Fatal(err)
+	}
 
 	ctx := context.Background()
 	runner := NewRunner("")
@@ -51,12 +51,13 @@ func TestRunner_H002_pass(t *testing.T) {
 }
 
 func TestRunner_H006_pass(t *testing.T) {
-	os.MkdirAll(".devcontainer", 0755)
-	f, _ := os.Create(".devcontainer/devcontainer.json")
-	if f != nil {
-		f.Close()
+	t.Chdir(t.TempDir())
+	if err := os.MkdirAll(".devcontainer", 0o755); err != nil {
+		t.Fatal(err)
 	}
-	defer os.RemoveAll(".devcontainer")
+	if err := os.WriteFile(".devcontainer/devcontainer.json", nil, 0o644); err != nil {
+		t.Fatal(err)
+	}
 
 	ctx := context.Background()
 	runner := NewRunner("")
