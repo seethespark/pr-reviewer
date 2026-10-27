@@ -136,7 +136,7 @@ type AgentConfig struct {
 |------|------|----------------|
 | H001 | README present and accurate | `os.Stat("README.md")` |
 | H002 | CODEOWNERS exists | `os.Stat(".github/CODEOWNERS")` |
-| H003 | Dependencies up to date | `go list -u -m all` (Go) or `npm outdated` (Node). Detect language by `go.mod` / `package.json` presence. Only runs if ticked. |
+| H003 | Dependencies up to date | `go list -u -m all` (Go). Node: each direct dependency's version in `package-lock.json` against `npm view <name> version`, so nothing is installed and no install scripts run; `npm outdated --json` only when there is no lockfile but `node_modules` exists. Detect language by `go.mod` / `package.json` presence. Only runs if ticked. |
 | H004 | Devcontainer definition exists | `os.Stat(".devcontainer/devcontainer.json")` |
 
 **Output**: `[]CheckResult` with pass/fail status and optional explanation.
