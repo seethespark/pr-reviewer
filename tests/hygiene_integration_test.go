@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/config"
-	"github.com/nickwhiteley/pr-reviewer/internal/hygiene"
+	"github.com/seethespark/pr-reviewer/internal/config"
+	"github.com/seethespark/pr-reviewer/internal/hygiene"
 )
 
 func TestHygieneEndToEnd(t *testing.T) {

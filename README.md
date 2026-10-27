@@ -50,7 +50,7 @@ Nothing is dropped to save time: every file in an agent's scope is chunked and r
 
 ### Download binary (recommended)
 
-Download the latest release from the [Releases page](https://github.com/nickwhiteley/pr-reviewer/releases) for your platform:
+Download the latest release from the [Releases page](https://github.com/seethespark/pr-reviewer/releases) for your platform:
 
 | Platform | Archive |
 |---|---|
@@ -63,13 +63,13 @@ Download the latest release from the [Releases page](https://github.com/nickwhit
 ### Install with Go
 
 ```bash
-go install github.com/nickwhiteley/pr-reviewer/cmd/review@latest
+go install github.com/seethespark/pr-reviewer/cmd/review@latest
 ```
 
 ### Build from source
 
 ```bash
-git clone https://github.com/nickwhiteley/pr-reviewer.git
+git clone https://github.com/seethespark/pr-reviewer.git
 cd pr-reviewer
 make build        # produces ./pr-reviewer binary
 make test         # run tests with -race
@@ -267,7 +267,7 @@ jobs:
         with:
           fetch-depth: 0   # required: the reviewer diffs base..head locally
 
-      - uses: nickwhiteley/pr-reviewer@main   # or pin: nickwhiteley/pr-reviewer@v1.2.3
+      - uses: seethespark/pr-reviewer@main   # or pin: seethespark/pr-reviewer@v1.2.3
         with:
           api-key: ${{ secrets.OLLAMA_API_KEY }}
           # provider: anthropic          # optional overrides
@@ -287,7 +287,7 @@ Add `OLLAMA_API_KEY` (or `ANTHROPIC_API_KEY` via `provider: anthropic`) as a rep
       - name: Install pr-reviewer
         run: |
           gh release download \
-            --repo nickwhiteley/pr-reviewer \
+            --repo seethespark/pr-reviewer \
             --pattern 'pr-reviewer_linux_amd64.tar.gz' \
             -D /tmp/pr-reviewer
           tar -xzf /tmp/pr-reviewer/pr-reviewer_linux_amd64.tar.gz -C /usr/local/bin

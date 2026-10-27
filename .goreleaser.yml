@@ -43,5 +43,5 @@ snapshot:
 
 release:
   github:
-    owner: nickwhiteley
+    owner: seethespark
     name: pr-reviewer

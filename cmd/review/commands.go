@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/config"
+	"github.com/seethespark/pr-reviewer/internal/config"
 )
 
 // commentSink is where review reports go: the GitHub API normally,

@@ -12,12 +12,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/config"
-	"github.com/nickwhiteley/pr-reviewer/internal/diff"
-	"github.com/nickwhiteley/pr-reviewer/internal/github"
-	"github.com/nickwhiteley/pr-reviewer/internal/hygiene"
-	"github.com/nickwhiteley/pr-reviewer/internal/provider"
-	"github.com/nickwhiteley/pr-reviewer/internal/review"
+	"github.com/seethespark/pr-reviewer/internal/config"
+	"github.com/seethespark/pr-reviewer/internal/diff"
+	"github.com/seethespark/pr-reviewer/internal/github"
+	"github.com/seethespark/pr-reviewer/internal/hygiene"
+	"github.com/seethespark/pr-reviewer/internal/provider"
+	"github.com/seethespark/pr-reviewer/internal/review"
 )
 
 func main() {

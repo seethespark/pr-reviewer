@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/github"
+	"github.com/seethespark/pr-reviewer/internal/github"
 )
 
 func TestBuildDiscussion(t *testing.T) {

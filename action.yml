@@ -58,9 +58,9 @@ runs:
         esac
         version="${{ inputs.version }}"
         if [ "$version" = "latest" ]; then
-          url="https://github.com/nickwhiteley/pr-reviewer/releases/latest/download/$asset"
+          url="https://github.com/seethespark/pr-reviewer/releases/latest/download/$asset"
         else
-          url="https://github.com/nickwhiteley/pr-reviewer/releases/download/$version/$asset"
+          url="https://github.com/seethespark/pr-reviewer/releases/download/$version/$asset"
         fi
         mkdir -p "$RUNNER_TEMP/pr-reviewer"
         curl -fsSL "$url" | tar -xz -C "$RUNNER_TEMP/pr-reviewer"
