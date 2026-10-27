@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/config"
-	"github.com/nickwhiteley/pr-reviewer/internal/diff"
-	"github.com/nickwhiteley/pr-reviewer/internal/review"
+	"github.com/seethespark/pr-reviewer/internal/config"
+	"github.com/seethespark/pr-reviewer/internal/diff"
+	"github.com/seethespark/pr-reviewer/internal/review"
 )
 
 func TestNewPromptBudget(t *testing.T) {

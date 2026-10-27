@@ -7,7 +7,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/provider"
+	"github.com/seethespark/pr-reviewer/internal/provider"
 )
 
 func TestOllamaUnreachable(t *testing.T) {

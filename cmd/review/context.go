@@ -7,8 +7,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/diff"
-	"github.com/nickwhiteley/pr-reviewer/internal/github"
+	"github.com/seethespark/pr-reviewer/internal/diff"
+	"github.com/seethespark/pr-reviewer/internal/github"
 )
 
 const (

@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/config"
+	"github.com/seethespark/pr-reviewer/internal/config"
 )
 
 // Finding is one structured issue reported by an agent.

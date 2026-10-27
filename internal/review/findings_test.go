@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/config"
+	"github.com/seethespark/pr-reviewer/internal/config"
 )
 
 func TestParseFindings_fenced(t *testing.T) {

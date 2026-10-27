@@ -9,9 +9,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/config"
-	"github.com/nickwhiteley/pr-reviewer/internal/provider"
-	"github.com/nickwhiteley/pr-reviewer/internal/review"
+	"github.com/seethespark/pr-reviewer/internal/config"
+	"github.com/seethespark/pr-reviewer/internal/provider"
+	"github.com/seethespark/pr-reviewer/internal/review"
 )
 
 func TestAgentPipeline(t *testing.T) {

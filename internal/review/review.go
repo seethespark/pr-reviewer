@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/nickwhiteley/pr-reviewer/internal/config"
+	"github.com/seethespark/pr-reviewer/internal/config"
 )
 
 // SeveritySummary is the structured severity block from an agent response.
